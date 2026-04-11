@@ -11,12 +11,13 @@ default.
 ## Structure
 
 ```
-<language>/
-  highlights.scm   — syntax highlighting captures
-  folds.scm        — code folding regions
-  indents.scm      — automatic indentation rules
-  injections.scm   — embedded language detection
-  locals.scm       — scope and definition tracking
+queries/
+  <language>/
+    highlights.scm   — syntax highlighting captures
+    folds.scm        — code folding regions
+    indents.scm      — automatic indentation rules
+    injections.scm   — embedded language detection
+    locals.scm       — scope and definition tracking
 ```
 
 Not every language has all query types. Each directory contains whichever
@@ -27,22 +28,19 @@ queries are available for that language.
 ### With arborist.nvim (automatic)
 
 If you use [arborist.nvim](https://github.com/arborist-ts/arborist.nvim),
-queries are fetched and installed automatically alongside parsers. No
-configuration needed.
+this repo is installed automatically as a Neovim plugin. No configuration
+needed.
 
-### Manual
+### Standalone
 
-Copy the desired language directory into your Neovim runtime queries path:
+Install as a Neovim plugin with `vim.pack`:
 
+```lua
+vim.pack.add("https://github.com/arborist-ts/queries")
 ```
-~/.local/share/nvim/site/queries/<language>/
-```
 
-Or into your Neovim config for highest priority:
-
-```
-~/.config/nvim/queries/<language>/
-```
+Or any other plugin manager. The `queries/` directory follows the standard
+Neovim runtimepath layout — queries are picked up automatically.
 
 ## Contributing
 
